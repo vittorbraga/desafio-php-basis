@@ -80,7 +80,12 @@ class AutomovelController extends Controller
      */
     public function show($id)
     {
-        //
+        $automovel = Automovel::find($id);
+        $filiais = Filial::all();
+        $show = array(
+            "show" => true
+        );
+        return view('automovel.edit', compact(['automovel', 'filiais', 'show']));
     }
 
     /**

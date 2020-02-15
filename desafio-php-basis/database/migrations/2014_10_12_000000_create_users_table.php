@@ -16,9 +16,20 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->date('data_nascimento');
+            $table->string('sexo');
+            $table->string('cpf')->unique();
+            $table->string('endereco');
+            $table->string('bairro');
+            $table->string('cidade');
+            $table->string('uf');
+            $table->string('cargo');
+            $table->decimal('salario',9,2);
+            $table->tinyInteger('situacao')->default(1);
             $table->string('password');
+            $table->unsignedBigInteger('id_filial');
+            $table->foreign('id_filial')->references('id')->on('filials');
+
             $table->rememberToken();
             $table->timestamps();
         });

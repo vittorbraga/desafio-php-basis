@@ -21,7 +21,7 @@
                 <td>Nome</td>
                 <td>Endereço</td>
                 <td>CNPJ</td>
-                <td colspan = 2>Ações</td>
+                <td>Ações</td>
             </tr>
         </thead>
         <tbody>
@@ -31,11 +31,12 @@
                 <td>{{$filial->nome}}</td>
                 <td>{{$filial->endereco}}</td>
                 <td>{{$filial->cnpj}}</td>
-                <td><a href="{{ route('filial.edit',$filial->id)}}" class="btn btn-primary">Editar</a></td>
                 <td>
                     <form action="{{ route('filial.destroy', $filial->id)}}" method="post">
                         @csrf
                         @method('DELETE')
+                        <a href="{{ route('filial.show',$filial->id)}}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('filial.edit',$filial->id)}}" class="btn btn-primary">Editar</a>
                         <button class="btn btn-danger" type="submit">Deletar</button>
                     </form>
                 </td>

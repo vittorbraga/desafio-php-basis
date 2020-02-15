@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Filial;
+use App\Ufs;
 
 class FilialController extends Controller
 {
@@ -36,7 +37,8 @@ class FilialController extends Controller
      */
     public function create()
     {
-        return view('filial.create');
+        $ufs = Ufs::getUfs();
+        return view('filial.create', compact('ufs'));
     }
 
     /**
@@ -78,7 +80,12 @@ class FilialController extends Controller
      */
     public function show($id)
     {
-        //
+        $filial = Filial::find($id);
+        $ufs = Ufs::getUfs();
+        $show = array(
+            "show" => true
+        );
+        return view('filial.edit', compact(['filial', 'ufs', 'show']));
     }
 
     /**
@@ -90,7 +97,8 @@ class FilialController extends Controller
     public function edit($id)
     {
         $filial = Filial::find($id);
-        return view('filial.edit', compact('filial'));
+        $ufs = Ufs::getUfs();
+        return view('filial.edit', compact(['filial', 'ufs']));
     }
 
     /**

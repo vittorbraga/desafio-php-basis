@@ -10,33 +10,33 @@
         @endif
     </div>
     <div class="col-sm-12">
-        <h1 class="display-3">Automóveis</h1>
+        <h1 class="display-3">Funcionários</h1>
     <div>
-        <a style="margin: 19px;" href="{{ route('automovel.create')}}" class="btn btn-primary">Novo Automóvel</a>
+        <a style="margin: 19px;" href="{{ route('funcionario.create')}}" class="btn btn-primary">Novo Funcionário</a>
     </div>
     <table class="table table-striped">
         <thead>
             <tr>
                 <td>ID</td>
                 <td>Nome</td>
-                <td>Ano</td>
-                <td>Modelo</td>
-                <td>Ações</td>
+                <td>Endereço</td>
+                <td>CPF</td>
+                <td colspan = 2>Ações</td>
             </tr>
         </thead>
         <tbody>
-            @foreach($automoveis as $automovel)
+            @foreach($users as $user)
             <tr>
-                <td>{{$automovel->id}}</td>
-                <td>{{$automovel->nome}}</td>
-                <td>{{$automovel->ano}}</td>
-                <td>{{$automovel->modelo}}</td>
+                <td>{{$user->id}}</td>
+                <td>{{$user->name}}</td>
+                <td>endereco</td>
+                <td>{{$user->cpf}}</td>
                 <td>
-                    <form action="{{ route('automovel.destroy', $automovel->id)}}" method="post">
+                    <form action="{{ route('funcionario.destroy', $user->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ route('automovel.show',$automovel->id)}}" class="btn btn-info">Ver</a>
-                        <a href="{{ route('automovel.edit',$automovel->id)}}" class="btn btn-primary">Editar</a>
+                        <a href="{{ route('funcionario.show',$user->id)}}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('funcionario.edit',$user->id)}}" class="btn btn-primary">Editar</a>
                         <button class="btn btn-danger" type="submit">Deletar</button>
                     </form>
                 </td>

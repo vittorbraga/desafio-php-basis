@@ -13,9 +13,12 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout');
 
 Route::resource('filial', 'FilialController');
 Route::resource('automovel', 'AutomovelController');
+Route::resource('funcionario', 'FuncionarioController');
 
 Route::get('/home', 'HomeController@index')->name('home');

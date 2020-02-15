@@ -37,4 +37,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Get the login cpf to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'cpf';
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        return ['cpf' => $request->{$this->username()}, 'password' => $request->password, 'situacao' => 1];
+    }
 }
