@@ -7,6 +7,7 @@ use App\User;
 use App\Filial;
 use App\Ufs;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class FuncionarioController extends Controller
 {
@@ -41,7 +42,8 @@ class FuncionarioController extends Controller
     {
         $filiais = Filial::all();
         $ufs = Ufs::getUfs();
-        return view('funcionario.create', compact(['filiais', 'ufs']));
+        $password = Str::random(6);
+        return view('funcionario.create', compact(['filiais', 'ufs', 'password']));
     }
 
     /**

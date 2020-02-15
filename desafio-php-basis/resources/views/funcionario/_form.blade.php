@@ -69,6 +69,8 @@
 <div class="form-row">
     <div class="form-group col-6">
         <label for="password">Senha</label>
+        <buttom class="btn btn-warning btn-sm"
+            onclick="document.getElementById('password').value = '{{ $password }}'; document.getElementById('password-confirm').value = '{{ $password }}';">Usar senha: {{ $password }}</buttom>
         <input id="password" type="password" class="form-control" name="password" autocomplete="new-password" @if (($show ?? '') <> '' ) disabled='disabled' @endif />
     </div>
     <div class="form-group col-6">
